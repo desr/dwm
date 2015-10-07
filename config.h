@@ -2,15 +2,15 @@
 
 /* appearance */
 static const char *fonts[] = {
-    "Terminus:size=8", 
+    "Terminus:size=9.5", 
     "Sans:size=10.5",
     "VL Gothic:size=10.5",
     "WenQuanYi Micro Hei:size=10.5",
 };
-static const char dmenufont[] = "Terminus:size=8";
-static const char normbordercolor[] = "#000000";
+static const char dmenufont[] = "Terminus:size=9.5";
+static const char normbordercolor[] = "#999999";
 static const char normbgcolor[]     = "#000000";
-static const char normfgcolor[]     = "#999999";
+static const char normfgcolor[]     = "#aaaaaa";
 static const char selbordercolor[]  = "#ffffff";
 static const char selbgcolor[]      = "#000000";
 static const char selfgcolor[]      = "#ffffff";
@@ -20,7 +20,7 @@ static const Bool showbar           = True;     /* False means no bar */
 static const Bool topbar            = True;     /* False means bottom bar */
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "Term", "Web", "Comm", "Media", "Virt", "6", "7", "8", "9" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -29,8 +29,12 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            True,        -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       False,       -1 },
-	{ "Chromium", NULL,       NULL,       1 << 2,       False,       -1 },
+	{ "Firefox",  NULL,       NULL,       1 << 1,       False,       -1 },
+	{ "Chromium", NULL,       NULL,       1 << 1,       False,       -1 },
+	{ "Surf",     NULL,       NULL,       1 << 1,       False,       -1 },
+	{ "Xchat",    NULL,       NULL,       1 << 2,       False,       -1 }, 
+	{ NULL,       NULL,       "irssi",    1 << 2,       False,       -1 }, 
+	{ "Vlc",      NULL,       NULL,       1 << 3,       False,       -1 }, 
 };
 
 /* layout(s) */
@@ -98,6 +102,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 	{ MODKEY|ShiftMask,             XK_l,      spawn,          {.v = lockcmd } },
+	{ MODKEY,                       XK_grave,  toggleview,     {.ui = 1 << 8 } },
 };
 
 /* button definitions */
